@@ -1,0 +1,419 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      @media screen and (max-width: 600px) {
+        div.container {
+          display: grid;
+          height: 100%;
+          grid-column-gap: 20px;
+          grid-row-gap: 20px;
+          border: 10px solid #dfdfdf;
+          grid-template-areas: "header" "picture" "info" "project1" "project2" "project3" "project4" "footer" "footer";
+        }
+      }
+      .header {
+        grid-area: header;
+        width: auto;
+        background-color: black;
+      }
+      .project1 {
+        grid-area: project1;
+      }
+      .project2 {
+        grid-area: project2;
+      }
+      .project3 {
+        grid-area: project3;
+      }
+      .project4 {
+        grid-area: project4;
+      }
+      .picture {
+        grid-area: picture;
+        background-color: black;
+      }
+      .info {
+        grid-area: info;
+        background-color: black;
+        justify-content: center;
+        color: white;
+      }
+      img {
+        border-radius: 50%;
+        height: 35vh;
+        padding-left: 3%;
+      }
+      .container {
+        display: grid;
+        grid-template-areas: "header header" "picture info" "project1 project2" "project3 project4" "footer footer";
+      }
+      .about {
+        background-color: black;
+        justify-content: center;
+        color: white;
+      }
+      p {
+        text-align: center;
+        padding: 20px 0;
+        font-size: 20px;
+        color: white;
+        font-family: "Source Sans Pro", sans-serif;
+        font-weight: 300;
+        line-height: 1.5;
+      }
+      div {
+        background-color: rgba(240, 232, 220, 0.658);
+        text-align: center;
+        padding: 5px 0;
+        font-size: 20px;
+      }
+
+      .info span,
+      h2 {
+        text-align: center;
+        color: white;
+        font-family: "Source Sans Pro", sans-serif;
+        line-height: 1.5;
+        background: -webkit-linear-gradient(white, rgb(189, 231, 189));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      figure {
+        position: relative;
+        width: 480px;
+        height: 250px;
+        padding: 20px 20px;
+        background-color: rgb(77, 82, 18);
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        overflow: hidden;
+      }
+      figure:before,
+      figure:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      figure:after {
+        content: "";
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        overflow: hidden;
+      }
+
+      .a1:hover:after {
+        background-image: url("a1.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        content: "<>";
+        color: white;
+        font-size: 72px;
+        z-index: 2;
+      }
+      .b1:hover:after {
+        background-image: url("b1.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        content: "<>";
+        color: white;
+        font-size: 72px;
+        z-index: 2;
+      }
+      .c1:hover:after {
+        background-image: url("c1.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        content: "<>";
+        color: white;
+        font-size: 72px;
+        z-index: 2;
+      }
+      .d1:hover:after {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgb(77, 82, 18);
+        content: "<>";
+        color: white;
+        font-size: 72px;
+        z-index: 2;
+      }
+      figure:hover sample {
+        transform: translateY(-110%);
+      }
+      figure sample {
+        color: white;
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        z-index: 1;
+      }
+      figure sample h4 {
+        margin: 0 0 5px;
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 25px;
+        line-height: 1.35;
+        font-weight: 300;
+        line-height: 1.5;
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
+      }
+      figure sample h4 > span {
+        background-color: rgba(235, 180, 60, 0.8);
+      }
+      figure sample p {
+        margin: 0;
+        line-height: 1.5;
+      }
+      .footer {
+        grid-area: footer;
+        background-color: #343a40;
+        color: #f8f9fa;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .footer a {
+        color: #fff;
+      }
+
+      .footer a:not(:first-child) {
+        margin-left: 5px;
+      }
+
+      .footer a:not(:last-child) {
+        padding-right: 10px;
+        border-right: 1px solid;
+      }
+      .portfolio-resume .fa {
+        font-size: 1.75rem;
+      }
+
+      .portfolio-resume span {
+        padding: 1px 0 0 10px;
+        text-transform: uppercase;
+      }
+      .fa {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .fa-fw {
+        width: 1.28571429em;
+        text-align: center;
+      }
+      .fa-envelope-o:before {
+        content: "\f003";
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+        display: block;
+        overflow: visible;
+        border: 5px solid rgb(223, 220, 183);
+        position: relative;
+        transform: rotate(0deg);
+        transition: transform 0.4s ease-in-out;
+        flex-shrink: 0;
+      }
+      .logo .logo-text {
+        color: #f6ac00;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(0deg);
+        transition: transform 0.4s ease-in-out;
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .logo:hover {
+        opacity: 1;
+        transform: rotate(-90deg);
+        transition: transform 0.4s ease-in-out;
+      }
+      .logo:hover .logo-text {
+        transform: translate(-50%, -50%) rotate(90deg);
+        transform-origin: center;
+      }
+      .logo:hover #logo-stroke {
+        transform: rotate(-90deg);
+        transform-origin: center center;
+        transition: transform 0.5s ease-in-out;
+      }
+      .header {
+        padding-right: 1em;
+        padding-left: 1em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      .list-item {
+        padding: 0;
+        list-style: none;
+      }
+      .list-item:not(:first-child) {
+        margin-left: 2em;
+      }
+      .list-item a {
+        font-size: 1em;
+        color: #f6ac00;
+        text-decoration: none;
+      }
+      .list-item a:hover {
+        border-bottom: 2px solid rgb(223, 220, 183);
+        opacity: 1;
+      }
+      h1 {
+        text-align: center;
+        font-size: 45px;
+        background: -webkit-linear-gradient(
+          rgb(252, 255, 238),
+          rgb(34, 51, 42)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: Comic Sans MS, Comic Sans, cursive;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="home" class="header">
+        <a class="logo" href="#home">
+          <span class="logo-text">AB</span>
+        </a>
+        <h1>Akshata Basrur</h1>
+        <ul class="nav">
+          <li class="list-item"><a href="#home">Home</a></li>
+          <li class="list-item"><a href="#about">About</a></li>
+          <li class="list-item"><a href="#project">Projects</a></li>
+          <li class="list-item"><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div id="about" class="picture">
+        <img class="first" src="profile_pic.png" />
+      </div>
+      <div id="about" class="info">
+        <h2>Software Developer</h2>
+        <span>
+          I love how few lines of code can bring so many innovations in our
+          lives. Getting what you want on just a single mouse click is just
+          truly fascinating to me. I am Developer with 3+ years of
+          experience.<br /><br />
+          Check out few of my projects below!!
+        </span>
+      </div>
+
+      <div id="project" class="project1">
+        <a href="http://webpage.pace.edu/ab27376n/Assignment%201/">
+          <figure class="a1">
+            <sample>
+              <h4><span>Angry Birds </span></h4>
+              <p>
+                Get driven by the magic of Angry Birds, a fun site having links
+                to Angry Birds slingshot stories and games
+              </p>
+            </sample>
+          </figure></a
+        >
+      </div>
+      <div id="project" class="project2">
+        <a href="http://webpage.pace.edu/ab27376n/Assignment%202/">
+          <figure class="b1">
+            <sample>
+              <h4><span>Ultra Corporation</span></h4>
+              <p>
+                Your perfect home is just a single mouse click away.<br />
+                Ultra Corporation is my attempt to build an online real estate
+                company.
+              </p>
+            </sample>
+          </figure></a
+        >
+      </div>
+      <div id="project" class="project3">
+        <a href="https://github.com/AkshataBasrur/Sorting-Hat">
+          <figure class="c1">
+            <sample>
+              <h4><span>The Sorting Hat</span></h4>
+              <p>
+                This is a crazy idea of having Hogwards administration up on the
+                internet. Imagine an online ceremony of sorting students into 4
+                different houses or casting a Depulso charm to mischevious
+                students.
+              </p>
+            </sample>
+          </figure></a
+        >
+      </div>
+      <div id="project" class="project4">
+        <a href="https://github.com/AkshataBasrur/Smart-Sleeve-Project">
+          <figure class="d1">
+            <sample>
+              <h4><span>The Smart Sleeve</span></h4>
+              <p>
+                Put on the smart sleeve designed to monitor blood pressure and
+                heart rate, avoiding big fussy equipments and being cost
+                effective at the same time.
+              </p>
+            </sample>
+          </figure></a
+        >
+      </div>
+
+      <div id="contact" class="footer">
+        <a
+          href="https://drive.google.com/open?id=1QoIYuUsQ-tvBPmrj2Ab0pFRFnaj6LGxl"
+          class="portfolio-resume"
+          target="_blank"
+        >
+          <span>View My Resume</span>
+        </a>
+        <a
+          href="https://github.com/AkshataBasrur"
+          class="portfolio-resume"
+          target="_blank"
+        >
+          <span>GITHUB</span>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/akshata-basrur/"
+          class="portfolio-resume"
+          target="_blank"
+        >
+          <span>LINKEDIN</span>
+        </a>
+        <a
+          class="portfolio-resume"
+          href="mailto:ab27376n@pace.edu"
+          target="_blank"
+        >
+          <i class="fa fa-fw fa-envelope-o"></i>
+          <span>Contact Me</span>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
